@@ -1,4 +1,6 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware"; // Import persist middleware
+import { Dayjs } from "dayjs";
 
 interface Service {
     id: string;
@@ -6,6 +8,10 @@ interface Service {
     description: string;
     price: number;
     selectedDate: Date;
+    category?: string;
+    startDate?: Dayjs | null;
+    endDate?: Dayjs | null;
+    duration?: number;
 }
 
 interface CartState {
@@ -15,16 +21,33 @@ interface CartState {
     clearBasket: () => void;
 }
 
-export const useBasketStore = create<CartState>((set) => ({
-    basket: [],
+export const useBasketStore = create<CartState>()(
+    persist(
+        (set) => ({
+            basket: [],
 
-    addToBasket: (service) => set((state) => ({
-        basket: [...state.basket, service],
-    })),
+            addToBasket: (service) =>
+                set((state) => ({
+                    basket: [...state.basket, service],
+                })),
 
-    removeFromBasket: (serviceId) => set((state) => ({
-        basket: state.basket.filter((item) => item.id !== serviceId),
-    })),
+            removeFromBasket: (serviceId) =>
+                set((state) => ({
+                    basket: state.basket.filter((item) => item.id !== serviceId),
+                })),
 
-    clearBasket: () => set({ basket: [] }),
-}));
+            clearBasket: () => set({ basket: [] }),
+        }),
+        {
+            name: "basket-storage", // Unique key for localStorage
+            storage: {
+                getItem: (name) => {
+                    const value = localStorage.getItem(name);
+                    return value ? JSON.parse(value) : null;
+                }, // Use localStorage
+                setItem: (name, value) => localStorage.setItem(name, JSON.stringify(value)),
+                removeItem: (name) => localStorage.removeItem(name),
+            }, // Use localStorage
+        }
+    )
+);
