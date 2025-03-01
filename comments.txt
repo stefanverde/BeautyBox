@@ -1,0 +1,45 @@
+{/*        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '10px'}}>*/}
+    {/*            <div style = {{fontWeight:`${Weights.Deep}`}}>EMS</div>*/}
+    {/*            <div style = {{fontWeight:`${Weights.Deep}`}}>65 RON</div>*/}
+    {/*        </div>*/}
+    {/*        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '10px'}}>*/}
+    {/*            <div style = {{fontWeight:`${Weights.Deep}`}}>CAPSULA</div>*/}
+    {/*            <div style = {{fontWeight:`${Weights.Deep}`}}>60 RON</div>*/}
+    {/*        </div>*/}
+    {/*        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '10px'}}>*/}
+    {/*            <div style = {{fontWeight:`${Weights.Deep}`}}>ROLA</div>*/}
+    {/*            <div style = {{fontWeight:`${Weights.Deep}`}}>40 RON</div>*/}
+    {/*        </div>*/}
+    {/*    </div>*/}
+    {/*    <h2 style={{color: `${Colors.Base}`, textShadow: '2px 2px #000000'}}>ABONAMENT EMS</h2>*/}
+
+    {/*    <div>*/}
+    {/*        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '10px'}}>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>8 EMS + 4 masaje anticelulitice</div>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>650 RON</div>*/}
+    {/*        </div>*/}
+    {/*        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '10px'}}>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>6 EMS + 2 masaje anticelulitice</div>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>460 RON</div>*/}
+    {/*        </div>*/}
+    {/*        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '10px'}}>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>ROLA</div>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>40 RON</div>*/}
+    {/*        </div>*/}
+    {/*    </div>*/}
+    {/*    <h2 style={{color: `${Colors.Base}`, textShadow: '2px 2px #000000'}}>ABONAMENT CAPSULA VACUUM</h2>*/}
+
+    {/*    <div>*/}
+    {/*        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '10px'}}>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>EMS</div>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>65 RON</div>*/}
+    {/*        </div>*/}
+    {/*        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '10px'}}>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>CAPSULA</div>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>60 RON</div>*/}
+    {/*        </div>*/}
+    {/*        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '10px'}}>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>ROLA</div>*/}
+    {/*            <div style={{fontWeight: `${Weights.Deep}`}}>40 RON</div>*/}
+    {/*        </div>*/}
+    {/*    </div>*/}

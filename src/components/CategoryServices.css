@@ -1,0 +1,118 @@
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #F8F1F3; /* Off White */
+    color: #2F534D; /* Dark Teal Green */
+    margin: 0;
+    padding: 0;
+}
+
+/* Page Structure */
+.category-page {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background-color: #FEA9CA; /* Soft Pink */
+    color: #2F534D; /* Dark Teal Green */
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Main Content Layout */
+.content {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Services & Basket Sections */
+.services-section,
+.basket-section {
+    flex: 1;
+    background-color: #A9FEDB; /* Mint Green */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Grid Layout for Services */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* Service Card */
+.service-card {
+    background: #F8F1F3; /* Off White */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Price Styling */
+.price {
+    font-weight: bold;
+    color: #2F534D; /* Dark Teal Green */
+    font-size: 1.2rem;
+}
+
+/* Buttons */
+button {
+    background-color: #FEA9CA; /* Soft Pink */
+    color: #2F534D; /* Dark Teal Green */
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #2F534D; /* Dark Teal Green */
+    color: #F8F1F3; /* Off White */
+}
+
+/* Basket Items */
+.basket-item {
+    background: #F8F1F3; /* Off White */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+/* Empty Messages */
+.empty-message {
+    text-align: center;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+}

@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --main-color: #FEA9CA; /* Soft Pink */
+  --mint-green: #A9FEDB; /* Mint Green */
+  --dark-green: #2F534D; /* Dark Teal Green */
+  --white: #F8F1F3; /* Off White */
+}
