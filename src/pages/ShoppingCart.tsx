@@ -1,12 +1,12 @@
 import React from "react";
-import { useBasketStore } from "../store/BasketStore";
+import {useBasketStore} from "../store/BasketStore"
 import dayjs from "dayjs";
 
 const ShoppingCart = () => {
-    const { basket, removeFromBasket } = useBasketStore();
+    const { basket, removeFromBasket, clearBasket } = useBasketStore(); // Get Zustand state and actions
 
     return (
-        <div>
+        <section className="basket-section">
             <h2>Your Basket</h2>
             {basket.length > 0 ? (
                 <div className="basket-list">
@@ -15,23 +15,16 @@ const ShoppingCart = () => {
                             <h3>{item.name}</h3>
                             <p>{item.description}</p>
                             <p className="price">${item.price}</p>
-                            {item.startDate && item.endDate && (
-                                <p>
-                                    Duration: {item.duration} months
-                                    <br />
-                                    From: {dayjs(item.startDate).format("MMMM D, YYYY")}
-                                    <br />
-                                    To: {dayjs(item.endDate).format("MMMM D, YYYY")}
-                                </p>
-                            )}
+                            <p>{dayjs(item.selectedDate).format("MMMM D, YYYY")}</p>
                             <button onClick={() => removeFromBasket(item.id)}>Remove</button>
                         </div>
                     ))}
+                    <button onClick={clearBasket} className="clear-basket">Clear Basket</button>
                 </div>
             ) : (
-                <p>Your basket is empty.</p>
+                <p className="empty-message">Your basket is empty.</p>
             )}
-        </div>
+        </section>
     );
 };
 
