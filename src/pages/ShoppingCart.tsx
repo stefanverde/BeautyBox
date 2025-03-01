@@ -1,7 +1,7 @@
 import React from "react";
 import { useBasketStore } from "../store/BasketStore";
 import dayjs from "dayjs";
-import "../components/styles.css"
+
 const ShoppingCart = () => {
     const { basket, removeFromBasket } = useBasketStore();
 
@@ -13,7 +13,7 @@ const ShoppingCart = () => {
             {basket.length > 0 ? (
                 <div className="cart-items">
                     {basket.map((item) => (
-                        <div key={item.id} className="cart-item">
+                        <div key={item.uniqueId} className="cart-item"> {/* Use uniqueId as key */}
                             <div>
                                 <h3>{item.name}</h3>
                                 <p>{item.description}</p>
@@ -32,7 +32,10 @@ const ShoppingCart = () => {
                                     </p>
                                 )}
                             </div>
-                            <button className="remove-button" onClick={() => removeFromBasket(item.id)}>
+                            <button
+                                className="remove-button"
+                                onClick={() => removeFromBasket(item.uniqueId!)} // Use uniqueId to remove
+                            >
                                 Remove
                             </button>
                         </div>

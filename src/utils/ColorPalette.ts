@@ -1,6 +1,7 @@
 export const Colors = {
     Main: "#FEA9CA", // (Soft Pink)
     MintGreen: "#A9FEDB", //(Mint Green)
+    MintGreenHover: "#66cf9e", //(Mint Green)
     DarkGreen: "#2F534D", // (Dark Teal Green)
     White: "#F8F1F3", //(Off White)
 }

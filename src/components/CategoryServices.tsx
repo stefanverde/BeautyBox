@@ -7,6 +7,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import "./styles.css"
+import {Colors} from "../utils/ColorPalette";
 interface Service {
     id: string;
     name: string;
@@ -20,7 +21,6 @@ const CategoryServices = () => {
     const [services, setServices] = useState<Service[]>([]);
     const addToBasket = useBasketStore((state: any) => state.addToBasket);
 
-    const [selectedService, setSelectedService] = useState<Service | null>(null);
     const [durations, setDurations] = useState<{ [key: string]: number | null }>({});
     const [selectedDates, setSelectedDates] = useState<{ [key: string]: Dayjs | null }>({});
     const [calendarOpen, setCalendarOpen] = useState<{ [key: string]: boolean }>({});
@@ -56,9 +56,9 @@ const CategoryServices = () => {
 
         addToBasket({
             ...service,
-            selectedDate: selectedDates[service.id],
+            selectedDate: selectedDates[service.id]!.toDate(),
             duration: durations[service.id],
-            endDate
+            endDate,
         });
 
         setSelectedDates((prev) => ({ ...prev, [service.id]: null }));
@@ -71,8 +71,8 @@ const CategoryServices = () => {
     };
 
     return (
-        <>
-            <Header />
+        <div style={{backgroundColor: `${Colors.White}`, height: '100vh'}}>
+            <Header/>
             <div className="category-page">
                 <header className="header">
                     <h1>{category} ({subscriptionType})</h1>
@@ -80,23 +80,44 @@ const CategoryServices = () => {
 
                 <main className="content">
                     <section className="services-section">
-                        <h2>Available Services</h2>
-                        <div className="services-grid">
+                        {/*<h2>Available Services</h2>*/}
+                        <div className="services-flex">
                             {services.length > 0 ? (
                                 services.map((service) => (
                                     <div key={service.id} className="service-card">
-                                        <h3>{service.name}</h3>
-                                        <p>{service.description}</p>
-                                        <p className="price">${service.price}</p>
+                                        <div style = {{fontWeight:700, padding:'10px'}}>{service.name}</div>
+                                        <div style = {{display: "flex", justifyContent: "space-between", alignItems:'center'}}>
+                                            <div style = {{padding:'10px'}}>
+                                                <p>{service.description}</p>
+                                                <p className="price">Pret: {service.price} RON</p>
+                                            </div>
+                                            <div style = {{display:'flex', flexDirection:'column'}}>
+                                                <button
+                                                    onClick={() => handleToggleCalendar(service.id)}
+                                                    disabled={subscriptionType?.toLowerCase() === "abonament" && !durations[service.id]}
+                                                >
+                                                    {calendarOpen[service.id] ? "Close Calendar" : "Select Date"}
+                                                </button>
+                                                <button
+                                                    onClick={() => handleAddToBasket(service)}
+                                                    disabled={!selectedDates[service.id]}
+                                                >
+                                                    Add to Basket
+                                                </button>
+                                            </div>
+                                        </div>
 
-                                        {/* Duration Dropdown for Abonament */}
+
                                         {subscriptionType?.toLowerCase() === "abonament" && (
                                             <div className="duration-select">
                                                 <label>Select Duration:</label>
                                                 <select
                                                     value={durations[service.id] || ""}
                                                     onChange={(e) =>
-                                                        setDurations((prev) => ({ ...prev, [service.id]: Number(e.target.value) }))
+                                                        setDurations((prev) => ({
+                                                            ...prev,
+                                                            [service.id]: Number(e.target.value)
+                                                        }))
                                                     }
                                                 >
                                                     <option value="" disabled>Select duration</option>
@@ -107,22 +128,19 @@ const CategoryServices = () => {
                                             </div>
                                         )}
 
-                                        {/* Toggle Calendar Button */}
-                                        <button
-                                            onClick={() => handleToggleCalendar(service.id)}
-                                            disabled={subscriptionType?.toLowerCase() === "abonament" && !durations[service.id]}
-                                        >
-                                            {calendarOpen[service.id] ? "Close Calendar" : "Select Date"}
-                                        </button>
 
-                                        {/* Show Date Picker */}
+
+
                                         {calendarOpen[service.id] && (
                                             <div className="date-picker-container">
                                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                                     <DateCalendar
                                                         value={selectedDates[service.id] || null}
                                                         onChange={(newValue) =>
-                                                            setSelectedDates((prev) => ({ ...prev, [service.id]: newValue }))
+                                                            setSelectedDates((prev) => ({
+                                                                ...prev,
+                                                                [service.id]: newValue
+                                                            }))
                                                         }
                                                         minDate={dayjs(new Date())} // Prevent past dates
                                                     />
@@ -131,12 +149,7 @@ const CategoryServices = () => {
                                         )}
 
                                         {/* Add to Basket Button */}
-                                        <button
-                                            onClick={() => handleAddToBasket(service)}
-                                            disabled={!selectedDates[service.id]}
-                                        >
-                                            Add to Basket
-                                        </button>
+
                                     </div>
                                 ))
                             ) : (
@@ -146,7 +159,7 @@ const CategoryServices = () => {
                     </section>
                 </main>
             </div>
-        </>
+        </div>
     );
 };
 
